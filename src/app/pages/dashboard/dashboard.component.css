@@ -1,0 +1,93 @@
+/* Sidebar */
+#sidebar {
+    background-color: #2C3E50; /* สีน้ำเงินเข้ม */
+    min-height: 100vh;
+    color: #FFFFFF;
+    padding-top: 20px;
+  }
+  
+  #sidebar .sidebar-header {
+    background-color: #2C3E50;
+    color: #FFFFFF;
+  }
+  
+  #sidebar .sidebar-header h3 {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: bold;
+  }
+  
+  #sidebar .nav-link {
+    color: #ECF0F1;
+    font-size: 1.1em;
+    padding: 12px 20px;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  #sidebar .nav-link:hover {
+    background-color: #3498DB;
+    transform: translateX(5px); /* ให้เลื่อนไปทางขวาเล็กน้อย */
+  }
+  
+  #sidebar .nav-link.active {
+    background-color: #2980B9;
+  }
+  
+  #sidebar .nav-link i {
+    margin-right: 10px; /* เพิ่มช่องว่างระหว่างไอคอนกับข้อความ */
+  }
+  
+  #sidebar .nav-link.text-danger {
+    color: #E74C3C;
+  }
+  
+  #sidebar .nav-link.text-danger:hover {
+    background-color: #C0392B;
+  }
+  
+  /* Main Content */
+  .content {
+    background-color: #ECF0F1;
+    min-height: 100vh;
+    padding: 30px;
+  }
+  
+  .content h1, .content h2, .content h3 {
+    color: #2C3E50;
+    font-weight: bold;
+  }
+  
+  .card {
+    background-color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .card-title {
+    color: #2C3E50;
+  }
+  
+  .card-text {
+    color: #7F8C8D;
+  }
+  
+  .card .btn {
+    background-color: #3498DB;
+    color: #FFFFFF;
+    transition: background-color 0.3s;
+  }
+  
+  .card .btn:hover {
+    background-color: #2980B9;
+  }
+  
+  /* Active state for the sidebar links */
+  #sidebar .nav-link.active {
+    background-color: #3498DB; /* สีฟ้าอ่อน */
+    color: #FFFFFF;
+    border-radius: 5px; /* เพิ่มมุมโค้ง */
+  }
+  
