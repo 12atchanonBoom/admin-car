@@ -8,7 +8,7 @@ export class InsuranceService {
   private insurances: Insurance[] = [
     { 
       id: 1, 
-      name: ' 1', 
+      name: 'ประกันชั้น 1', 
       type: 'รถเก๋ง', 
       coverage: 1000000, 
       price: 15000, 
