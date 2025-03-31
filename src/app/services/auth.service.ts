@@ -1,24 +1,37 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private isLoggedInStatus = false;
+  private readonly storageKey = 'isLoggedIn';
+
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {}
 
   login(username: string, password: string): boolean {
     if (username === 'a' && password === '1') {
-      this.isLoggedInStatus = true;
+      // ตรวจสอบว่าอยู่ในเบราว์เซอร์หรือไม่ก่อนเข้าถึง localStorage
+      if (isPlatformBrowser(this.platformId)) {
+        localStorage.setItem(this.storageKey, 'true');
+      }
       return true;
     }
     return false;
   }
 
   isLoggedIn(): boolean {
-    return this.isLoggedInStatus;
+    // ตรวจสอบว่าอยู่ในเบราว์เซอร์หรือไม่ก่อนเข้าถึง localStorage
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem(this.storageKey) === 'true';
+    }
+    return false;
   }
 
   logout() {
-    this.isLoggedInStatus = false;
+    // ตรวจสอบว่าอยู่ในเบราว์เซอร์หรือไม่ก่อนลบข้อมูลจาก localStorage
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem(this.storageKey);
+    }
   }
 }

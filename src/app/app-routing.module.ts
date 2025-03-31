@@ -10,15 +10,15 @@ import { ApproveInsuranceComponent } from './pages/approve-insurance/approve-ins
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuard],
-    children: [
-      { path: '', redirectTo: 'manage-insurance', pathMatch: 'full' },
-      { path: 'users', component: UserListComponent },
-      { path: 'manage-insurance', component: InsuranceManagementComponent },
-      { path: 'approve-insurance', component: ApproveInsuranceComponent }
-    ]
+      path: 'dashboard',
+      component: DashboardComponent,
+      canActivate: [AuthGuard], // ตรวจสอบการ login
+      children: [
+        { path: '', redirectTo: 'manage-insurance', pathMatch: 'full' },
+        { path: 'users', component: UserListComponent },
+        { path: 'manage-insurance', component: InsuranceManagementComponent },
+        { path: 'approve-insurance', component: ApproveInsuranceComponent }
+      ]
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login' }

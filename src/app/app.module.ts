@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { InsuranceManagementComponent } from './pages/insurance-management/insurance-management.component';
@@ -15,7 +15,6 @@ import { ApproveInsuranceComponent } from './pages/approve-insurance/approve-ins
   declarations: [
     AppComponent,
     LoginComponent,
-    SidebarComponent,
     UserListComponent,
     DashboardComponent,
     InsuranceManagementComponent,
