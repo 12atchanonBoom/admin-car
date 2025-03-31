@@ -1,28 +1,36 @@
 <div class="container">
-  <h3 class="mb-4">จัดการประกันรถยนต์</h3>
+  <h3 class="mb-4">{{ isEditMode ? 'แก้ไขแผนประกัน' : 'เพิ่มแผนประกัน' }}</h3>
 
   <!-- ฟอร์ม -->
   <form (ngSubmit)="onSubmit()" class="mb-4">
     <div class="row g-2">
-      <!-- ชื่อประกัน -->
-      <div class="col-md-2">
-        <label for="name">ชื่อประกัน</label>
-        <input type="text" id="name" class="form-control" placeholder="ชื่อประกัน" [(ngModel)]="formModel.name" name="name" required>
+      <!-- ชื่อชั้นประกัน (Dropdown) -->
+      <div class="col-md-3">
+        <label for="insuranceType">ชื่อชั้นประกัน</label>
+        <select id="insuranceType" class="form-control" [(ngModel)]="formModel.name" name="name" required>
+          <option value="ประกันชั้น 1">ประกันชั้น 1</option>
+          <option value="ประกันชั้น 2+">ประกันชั้น 2+</option>
+          <option value="ประกันชั้น 3">ประกันชั้น 3</option>
+        </select>
       </div>
 
-      <!-- ประเภทรถ -->
-      <div class="col-md-2">
-        <label for="type">ประเภทรถ</label>
-        <input type="text" id="type" class="form-control" placeholder="ประเภทรถ" [(ngModel)]="formModel.type" name="type" required>
+      <!-- ประเภทรถ (Dropdown) -->
+      <div class="col-md-3">
+        <label for="vehicleType">ประเภทรถ</label>
+        <select id="vehicleType" class="form-control" [(ngModel)]="formModel.type" name="type" required>
+          <option value="รถเก๋ง">รถเก๋ง</option>
+          <option value="รถกระบะ">รถกระบะ</option>
+          <option value="รถจักรยานยนต์">รถจักรยานยนต์</option>
+        </select>
       </div>
 
-      <!-- คุ้มครอง -->
-      <div class="col-md-2">
+      <!-- คุ้มครอง (บาท) -->
+      <div class="col-md-3">
         <label for="coverage">คุ้มครอง (บาท)</label>
         <input type="number" id="coverage" class="form-control" placeholder="กรอกจำนวนคุ้มครอง" [(ngModel)]="formModel.coverage" name="coverage" required>
       </div>
 
-      <!-- ราคา -->
+      <!-- ราคา (บาท) -->
       <div class="col-md-2">
         <label for="price">ราคา (บาท)</label>
         <input type="number" id="price" class="form-control" placeholder="กรอกราคา" [(ngModel)]="formModel.price" name="price" required>
@@ -33,14 +41,21 @@
         <label for="durationMonths">ระยะเวลา (เดือน)</label>
         <input type="number" id="durationMonths" class="form-control" placeholder="กรอกระยะเวลา" [(ngModel)]="formModel.durationMonths" name="durationMonths" required>
       </div>
+
+      <!-- รายละเอียดอื่น ๆ -->
+      <div class="col-md-6">
+        <label for="details">รายละเอียดอื่น ๆ</label>
+        <textarea id="details" class="form-control" placeholder="เช่น คุ้มครองรถหายไหม" [(ngModel)]="formModel.details" name="details"></textarea>
+      </div>
     </div>
-    <div class="mt-3">
+
+    <div class="mt-3 d-flex justify-content-start">
       <button type="submit" class="btn btn-success me-2">{{ isEditMode ? 'อัปเดต' : 'เพิ่ม' }}</button>
       <button type="button" class="btn btn-secondary" (click)="resetForm()">ล้างฟอร์ม</button>
     </div>
   </form>
 
-  <!-- ตาราง -->
+  <!-- ตารางแสดงแผนประกัน -->
   <table class="table table-bordered table-striped">
     <thead class="table-dark">
       <tr>
@@ -49,6 +64,8 @@
         <th>คุ้มครอง</th>
         <th>ราคา</th>
         <th>ระยะเวลา (เดือน)</th>
+        <th>รายละเอียด</th>
+        <th>สถานะ</th> <!-- เพิ่มคอลัมน์สถานะ -->
         <th>จัดการ</th>
       </tr>
     </thead>
@@ -59,8 +76,10 @@
         <td>{{ insurance.coverage | number }}</td>
         <td>{{ insurance.price | number }}</td>
         <td>{{ insurance.durationMonths }}</td>
+        <td>{{ insurance.details }}</td>
+        <td>{{ insurance.status }}</td> <!-- แสดงสถานะ -->
         <td>
-          <button class="btn btn-warning btn-sm me-1" (click)="onEdit(insurance)">แก้ไข</button>
+          <button class="btn btn-warning btn-sm" (click)="onEdit(insurance)">แก้ไข</button>
           <button class="btn btn-danger btn-sm" (click)="onDelete(insurance.id)">ลบ</button>
         </td>
       </tr>

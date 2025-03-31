@@ -1,0 +1,29 @@
+<div class="container">
+    <h3 class="mb-4">ตรวจสอบคำขอซื้อประกัน</h3>
+  
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ชื่อผู้ใช้</th>
+          <th>รายละเอียดรถ</th>
+          <th>ประกัน</th>
+          <th>จัดการ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let request of insuranceRequests">
+          <td>{{ request.name }}</td>
+          <td>{{ request.type }} - {{ request.coverage | number }} บาท</td>
+          <td>{{ request.name }}</td>
+          <td>
+            <button class="btn btn-success" (click)="approveInsurance(request.id)">อนุมัติ</button>
+            <button class="btn btn-danger" (click)="rejectInsurance(request.id)">ปฏิเสธ</button>
+            <div *ngIf="selectedInsurance && selectedInsurance.id === request.id">
+              <input type="text" [(ngModel)]="policyNumber" placeholder="หมายเลขกรมธรรม์" />
+              <input type="file" (change)="onFileChange($event)" />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

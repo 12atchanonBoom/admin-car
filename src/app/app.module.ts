@@ -9,6 +9,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { InsuranceManagementComponent } from './pages/insurance-management/insurance-management.component';
+import { ApproveInsuranceComponent } from './pages/approve-insurance/approve-insurance.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { InsuranceManagementComponent } from './pages/insurance-management/insur
     SidebarComponent,
     UserListComponent,
     DashboardComponent,
-    InsuranceManagementComponent
+    InsuranceManagementComponent,
+    ApproveInsuranceComponent
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,10 @@ export class InsuranceManagementComponent {
   formModel: Insurance = this.initInsurance();
   isEditMode = false;
 
+  insuranceTypes = ['ประกันชั้น 1', 'ประกันชั้น 2+', 'ประกันชั้น 3'];
+  vehicleTypes = ['รถเก๋ง', 'รถกระบะ', 'รถจักรยานยนต์'];
+  statusTypes = ['pending', 'approved', 'rejected'];  // เพิ่มสถานะสำหรับคำขอ
+
   constructor(private insuranceService: InsuranceService) {
     this.loadData();
   }
@@ -21,7 +25,16 @@ export class InsuranceManagementComponent {
   }
 
   initInsurance(): Insurance {
-    return { id: 0, name: '', type: '', coverage: 0, price: 0, durationMonths: 12 };
+    return { 
+      id: 0, 
+      name: '', 
+      type: '', 
+      coverage: 0, 
+      price: 0, 
+      durationMonths: 12, 
+      details: '', 
+      status: 'pending'  // ตั้งค่าเริ่มต้น
+    };
   }
 
   onSubmit() {
@@ -40,10 +53,8 @@ export class InsuranceManagementComponent {
   }
 
   onDelete(id: number) {
-    if (confirm('คุณแน่ใจหรือไม่ที่จะลบประกันนี้?')) {
-      this.insuranceService.deleteInsurance(id);
-      this.loadData();
-    }
+    this.insuranceService.deleteInsurance(id);
+    this.loadData();
   }
 
   resetForm() {

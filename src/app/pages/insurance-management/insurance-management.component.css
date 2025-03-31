@@ -1,0 +1,35 @@
+/* ฟอร์มทั้งหมด */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  form .col-md-2, form .col-md-3, form .col-md-6 {
+    flex: 1 0 20%; /* ทำให้แต่ละช่องกรอกข้อมูลอยู่ในบรรทัดเดียวกัน */
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 0.5rem; /* ระยะห่างระหว่าง label กับ input */
+  }
+  
+  input.form-control, select.form-control, textarea.form-control {
+    width: 100%; /* ทำให้ช่อง input ขยายเต็มความกว้าง */
+  }
+  
+  button {
+    margin-right: 10px; /* ระยะห่างระหว่างปุ่ม */
+  }
+  
+  table {
+    width: 100%; /* ขยายตารางให้เต็มพื้นที่ */
+  }
+  
+  /* ปรับปุ่มให้เรียงตรงกัน */
+  .d-flex {
+    display: flex;
+    justify-content: start; /* หรือ use justify-content-between ถ้าคุณต้องการให้ปุ่มห่างกัน */
+    gap: 1rem;
+  }
+  
